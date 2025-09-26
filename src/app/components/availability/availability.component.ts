@@ -26,9 +26,10 @@ export class AvailabilityComponent {
   private readonly startWorkingAt = 8;
   private workingHours = Array.from({ length: this.numberOfWorkingHours })
     .map((_, i) => {
-      const hour = String(i + this.startWorkingAt).padStart(2, '0');
+      const time = i + this.startWorkingAt;
+      const hour = String(time).padStart(2, '0');
       const value = `${ hour }:00`;
-      return ({ value, label: `${value}am`, disabled: true }) as Time;
+      return ({ value, label: `${value}${time >= 12 ? 'pm' : 'am'}`, disabled: true }) as Time;
     });
 
   availability = computed(() => {
