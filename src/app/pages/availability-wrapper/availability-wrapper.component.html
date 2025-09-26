@@ -1,0 +1,24 @@
+<div class="grid md:grid-cols-[400px_280px] gap-0 h-full">
+  <div
+    class="md:block"
+    [class.hidden]="!!selectedDate">
+    <div class="h-full bg-white border-b border-zinc-100 md:border-b-0 md:border-r flex justify-center">
+      <app-date-selection
+        [date]="selectedDate"
+        [timezone]="timeZone()"
+        [enabledDates]="availableDates"
+        (selectedDate)="onSelectDate($event)">
+      </app-date-selection>
+    </div>
+  </div>
+
+  <div class="block bg-[#FBFBFB]">
+    @if (selectedDate) {
+      <app-availability
+        [selectedDate]="selectedDate"
+        [slots]="slots()"
+        (selectedTime)="onSelectTime($event)">
+      </app-availability>
+    }
+  </div>
+</div>

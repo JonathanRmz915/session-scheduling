@@ -1,0 +1,8 @@
+<div class="min-h-screen bg-zinc-50 text-zinc-900">
+    <div class="md:w-[960px] md:h-[640px] mx-auto max-w-6xl py-6">
+        <div class="h-full rounded-2xl bg-white md:shadow-sm md:ring-1 ring-zinc-200">
+          <app-header [title]="confirmed ? 'Session scheduled' : 'Schedule session'"></app-header>
+          <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

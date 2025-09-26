@@ -1,0 +1,57 @@
+<div class="bg-white p-5 md:p-12 w-full">
+  <h1 class="text-xl font-semibold mb-6">Confirm booking</h1>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 md:gap-12 gap-6">
+    <div>
+      <div *ngIf="selectedTime" class="text-md font-semibold">
+        {{ selectedTime() | date:'EEEE, d MMMM y' }}
+      </div>
+
+      <div *ngIf="selectedTime()" class="mt-2 text-md font-semibold">
+        {{ selectedTime() | date:'h:mma':timezone:'en-US' | lowercase }}
+        -
+        {{ (selectedTime()!.getTime() + 3600000)   | date:'h:mma':timezone:'en-US' | lowercase }}
+        <span class="text-base font-semibold">
+            ({{ selectedTime() | date:'zzz':timezone:'en-US' }})
+          </span>
+      </div>
+
+      <div class="mt-1 text-black text-xs">
+        <p *ngIf="timezone && selectedTime()" class="text-xs text-black font-medium">{{ selectedTime()! | tzDisplay:timezone:'en-US' }}</p>
+      </div>
+    </div>
+
+    <div class="md:justify-self-start">
+      <div class="text-md font-semibold">{{ attendeeName }}</div>
+      <div class="text-md text-black">{{ attendeeEmail }}</div>
+    </div>
+  </div>
+
+  <p class="text-xs mt-6 text-[#505050]">
+    We will send you a confirmation email with the session details and meeting link.
+  </p>
+
+  <div class="mt-10 flex items-center justify-between">
+    <button type="button"
+            (click)="onBack()"
+            class="inline-flex items-center justify-center h-12 px-6 rounded-full
+                     border border-black text-black font-semibold">
+      Back
+    </button>
+
+    <button type="button"
+            (click)="onConfirm()"
+            class="text-lg inline-flex items-center justify-center h-12 px-8 rounded-full
+                     bg-black text-white font-semibold
+                     hover:bg-black/90 focus:outline-none focus:ring-2 focus:ring-black/50">
+      Confirm
+    </button>
+  </div>
+
+
+  <div class="md:hidden block border-t border-[#DEE0E8] mt-7">
+    <p class="text-center text-xs mt-3 text-[#505050]">
+      If this is not your data or you are not working with this coach, please close the page
+    </p>
+  </div>
+</div>

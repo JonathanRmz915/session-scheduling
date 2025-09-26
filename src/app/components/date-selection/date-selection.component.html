@@ -1,0 +1,19 @@
+<div class="p-4">
+  <h2 class="text-lg font-semibold">Select date:</h2>
+
+  <p class="block md:hidden text-xs py-2 text-[#505050]">Select a date and we will show you available time slots</p>
+  <p class="hidden md:block text-xs py-2 text-[#505050]">Select a date to see the available time slots on that day</p>
+
+  <div class="w-full flex justify-center pb-4">
+    <app-calendar
+      [selected]="date"
+      [enabledDates]="enabledDates"
+      (selectedChange)="selectedDate.emit($event)">
+    </app-calendar>
+  </div>
+
+  <p class="text-xs text-black font-medium pb-1">Timezone</p>
+  <p *ngIf="timezone" class="text-xs text-black font-medium">{{ now() | tzDisplay:timezone:'en-US' }}</p>
+
+</div>
+

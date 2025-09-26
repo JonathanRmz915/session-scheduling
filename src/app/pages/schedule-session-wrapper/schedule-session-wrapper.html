@@ -1,0 +1,13 @@
+<div
+  class="grid md:grid-cols-[280px_680px] gap-0 h-[525px] md:w-[960px] rounded-2xl">
+
+  <aside
+    class="border-b border-zinc-100 p-8 md:border-b-0 md:border-r md:block"
+    [class.hidden]="!!selectedDate">
+    <app-session-info [sessionPage]="sessionPage"></app-session-info>
+  </aside>
+
+  <div>
+    <router-outlet></router-outlet>
+  </div>
+</div>
